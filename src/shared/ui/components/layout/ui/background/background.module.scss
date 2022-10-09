@@ -1,0 +1,33 @@
+.background {
+  position: relative;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("../assets/background.png");
+  background-size: 40%;
+  background-position: center center;
+}
+
+.bgImage {
+  position: absolute;
+}
+
+.bgImage1 {
+  top: 0;
+  left: 0;
+}
+
+.bgImage2 {
+  top: 0;
+  right: 0;
+}
+
+.bgImage3 {
+  bottom: 0;
+  left: 0;
+}
+
+.bgImage4 {
+  bottom: 0;
+  right: 0;
+}
+

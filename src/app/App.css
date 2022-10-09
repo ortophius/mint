@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Kelly Slab";
+  font-weight: 400;
+  src: url("../shared/ui/assets/fonts/KellySlab-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../shared/ui/assets/fonts/OpenSans.ttf") format("truetype");
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
