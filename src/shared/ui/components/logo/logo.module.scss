@@ -14,3 +14,9 @@
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.label {
+  &:first-child {
+    text-align: right;
+  }
+}

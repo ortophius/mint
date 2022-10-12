@@ -1,5 +1,5 @@
-import Header from "../../feature/header/ui/header";
 import { Background } from "../../shared/ui/components/layout";
+import Header from "../../widgets/header/ui/header";
 
 function Home() {
   return <>

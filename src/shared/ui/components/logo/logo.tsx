@@ -1,8 +1,8 @@
 import styles from './logo.module.scss';
-import logo from '../assets/logo.png';
+import logo from './assets/logo.png';
 
 export const Logo = () => <div className={styles.logo}>
-  <span>мята</span>
+  <div className={styles.label}>мята</div>
   <img className={styles.logoImg} src={logo} alt="" />
-  <span>lounge</span>
+  <div className={styles.label}>lounge</div>
 </div>
