@@ -1,22 +1,18 @@
 import styles from './navbar.module.scss';
 import icon_burger from './assets/burger.svg';
-
-const menuList = [
-  'Основное',
-  'Закуски',
-  'Салаты',
-  'Горячее',
-  'Супы',
-  'Напитки',
-  'Алкоголь',
-  'Детское',
-  'Акции',
-  'Супы',
-  'Напитки',
-  'Алкоголь',
-]
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { allCategories } from "../../../entities/categories/model";
+import { useAppSelector } from "../../../shared/config/store";
+import { useAsyncModel } from "../../../shared/lib/useAysyncModel";
 
 export const Navbar = () => {
+  const { sliceSelector } = useAsyncModel({
+    model: allCategories,
+    ssr: true,
+  });
+
+  const categories = useAppSelector(sliceSelector);
+
   return (
     <nav className={styles.wrapper}>
       <div className={styles.icon}>

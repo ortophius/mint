@@ -1,9 +1,8 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
-import './App.css';
-import './colors.css';
-import Home from '../pages/home/Home';
+import "./App.scss";
+import "./colors.css";
+import Home from "../pages/home/Home";
 
 function App() {
   return (
