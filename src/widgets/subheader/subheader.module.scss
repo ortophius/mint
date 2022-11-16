@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.indicatorWrapper {
+  flex-grow: 0.4;
+  margin-right: 19px;
+}
+
+.ringWrapper {
+  flex-grow: 0.6;
+  min-width: 180px;
+}

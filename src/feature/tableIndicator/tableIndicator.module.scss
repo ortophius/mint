@@ -1,19 +1,14 @@
+@import '../../app/styles/mixins';
 
 .tableIndicator {
-  color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
-
-.number {
-  font-family: "Kelly Slab", sans-serif;
-  font-size: 32px;
+  justify-content: center;
+  @include plate;
+  padding: unset;
 }
 
 .label {
-  margin-top: 8px;
-  font-size: 12px;
-  width: min-content;
-  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
 }

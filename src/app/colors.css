@@ -1,7 +1,14 @@
 html {
   --color-white: #FFF;
-  --color-light-blue: #3782DA;
-  --color-light-grey: #9494A0;
-  --color-dark-grey: #424F5E;
+  --color-light-blue: #0F2837;
+  --color-light-blue100: #163A50;
+  --color-bright-blue: #20B4AB;
+  --color-light-grey: #21506C;
   --color-red: #FF5139;
+  /* Новые цвета */
+  --color-dark-blue: #091821;
+  --color-dirt-snow: #DCEBE9;
+  --gradient-main: linear-gradient(179deg, #0D2533 0.15%, #08161E 90.93%);
+  /* Тень */
+  --boxshadow-main: 0px 20px 15px rgba(0, 0, 0, 0.25);
 }

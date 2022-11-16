@@ -1,0 +1,75 @@
+.wrapper {
+  padding: 15px 37px;
+  height: 74px;
+  background-color: #163A50;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  outline: 1px solid #21506C;
+  border-radius: 20px 20px 0px 0px;
+  box-shadow: 0px -13px 17px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkoutBtn {
+  border: none;
+  background: none;
+  color: var(--color-dirt-snow);
+  font-weight: 600;
+  font-size: 16px;
+  position: relative;
+  padding-right: 15px;
+  &::before, &::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 7px;
+    position: absolute;
+    right: 0;
+  }
+  &::before {
+    width: 2px;
+    height: 7px;
+    background-color: var(--color-dirt-snow);
+    top: 8px;
+    transform: rotate(-45deg);
+  }
+  &::after {
+    width: 2px;
+    height: 7px;
+    background-color: var(--color-dirt-snow);
+    top: 12px;
+    transform: rotate(45deg);
+  }
+}
+
+.title, h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.amountPrice {
+  font-weight: 700;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  &::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 18px;
+    // background: url('./assets/tenge.svg') center no-repeat;
+    background-color: var(--color-dirt-snow);
+    mask-image: url('../../shared/ui/assets/img/tenge.svg');
+    margin-left: 2px;
+    margin-top: 2px;
+  }
+}

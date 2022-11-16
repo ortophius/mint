@@ -1,4 +1,5 @@
 import styles from './navbar.module.scss';
+import icon_burger from './assets/burger.svg';
 
 const menuList = [
   'Основное',
@@ -16,17 +17,23 @@ const menuList = [
 ]
 
 export const Navbar = () => {
-  return(
+  return (
     <nav className={styles.wrapper}>
-      <ul className={styles.list}>
+      <div className={styles.icon}>
+        <button className={styles.burger}>
+          <img src={icon_burger} alt="" />
+        </button>
+      </div>
+      <div className={styles.title}>Показать меню</div>
+      {/* <ul className={styles.list}>
         {menuList.map((item, count) => {
           return (
-            <li className={[styles.item, count == 2 ? styles.item_active : null].join(' ')}>
+            <li key={Date.now()} className={[styles.item, count == 2 ? styles.item_active : null].join(' ')}>
               <a href='#' className={styles.link}>{item}</a>
             </li>
           );
         })}
-      </ul>      
+      </ul>       */}
     </nav>
   );
 }

@@ -5,8 +5,5 @@ type TableIndicatorProps = {
 }
 
 export const TableIndicator = ({ number = 5 }: TableIndicatorProps) => <div className={styles.tableIndicator}>
-  <div className={styles.number}>
-    №{number}
-  </div>
-  <div className={styles.label}>Номер стола</div>
+  <div className={styles.label}>Номер стола: №{`4`}</div>
 </div>

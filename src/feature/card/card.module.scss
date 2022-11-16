@@ -1,0 +1,53 @@
+.wrapper {
+  background: var(--gradient-main);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: var(--boxshadow-main);
+  position: relative;
+}
+.picture {
+  shape-outside: circle(70%);
+  float: right;
+  width: 118px;
+  height: 118px;
+  margin-top: -35px;
+  border-radius: 100%;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0px 0px 10px 0px;
+  margin: 0;
+}
+
+.descr {
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  .price {
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: var(--color-bright-blue);
+    &::after {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 18px;
+      // background: url('./assets/tenge.svg') center no-repeat;
+      background-color: var(--color-bright-blue);
+      mask-image: url(./assets/tenge.svg);
+      margin-left: 5px;
+    }
+  }
+}

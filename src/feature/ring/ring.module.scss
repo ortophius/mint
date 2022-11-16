@@ -1,15 +1,25 @@
+@import '../../app/styles/mixins';
+
 .ringWrapper {
   -webkit-appearance: none;
-  border: none;
-  background: none;
   outline: none;
-  color: white;
   cursor: pointer;
+  @include plate(unset, linear-gradient(96.22deg, #091821 26.32%, #0A1D28 79.74%), 0px 0px 10px 2px rgba(17, 207, 59, 0.33));
+  border: 2px solid #11CF3B;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-dirt-snow);
 }
 
 .label {
-  display: inline-block;
-  width: min-content;
-  margin-top: 8px;
-  font-size: 12px;
+  margin-left: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
 }

@@ -14,7 +14,8 @@
 }
 
 html, body {
-  background: #1C1B1F;
+  background: var(--color-dark-blue);
+  color: var(--color-dirt-snow);
 }
 
 * {

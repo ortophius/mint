@@ -8,7 +8,7 @@ export const Ring = () => {
       <RingIcon />
     </div>
     <div className={styles.label}>
-    Пригласить официанта
+      Официант
     </div>
   </button>
 }
