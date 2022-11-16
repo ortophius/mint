@@ -1,0 +1,166 @@
+{
+    "uuid": "ae814a3c-6724-4de8-bd3c-2c46c57a843f",
+    "lastMigration": 22,
+    "name": "Menu",
+    "endpointPrefix": "",
+    "latency": 0,
+    "port": 8001,
+    "hostname": "0.0.0.0",
+    "routes": [
+        {
+            "uuid": "7caf04c8-0650-4feb-b8d7-36b799e03f04",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "categories",
+            "responses": [
+                {
+                    "uuid": "61009245-688a-4107-9713-e5432b6a3283",
+                    "body": "[{{#repeat 5 10 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\"\n}\n{{/repeat}}]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "filePath": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        },
+        {
+            "uuid": "d9521b9a-51bb-42af-94b0-3e122672e350",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "categories/:id",
+            "responses": [
+                {
+                    "uuid": "07cd0f04-5a26-4ff3-878e-612ab37c0d18",
+                    "body": "{\n  \"id\": \"{{urlParam 'id'}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\"\n}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "filePath": "",
+                    "sendFileAsBody": false,
+                    "rules": [
+                        {
+                            "target": "params",
+                            "modifier": "id",
+                            "value": "",
+                            "invert": true,
+                            "operator": "null"
+                        }
+                    ],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        },
+        {
+            "uuid": "2ef71400-2189-4f67-92bb-e4b328a4d11a",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "items/:categoryId",
+            "responses": [
+                {
+                    "uuid": "59714257-649b-441f-bb55-8d0a9c3094c1",
+                    "body": "[{{#repeat 3 10 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}\n{{/repeat}}]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "filePath": "",
+                    "sendFileAsBody": false,
+                    "rules": [
+                        {
+                            "target": "params",
+                            "modifier": "categoryId",
+                            "value": "",
+                            "invert": true,
+                            "operator": "null"
+                        }
+                    ],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        },
+        {
+            "uuid": "c632a797-4316-4717-8cbe-ed62999d4cb3",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "item/:id",
+            "responses": [
+                {
+                    "uuid": "181b6b98-452c-48e3-8937-d8c46cd43332",
+                    "body": "{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "filePath": "",
+                    "sendFileAsBody": false,
+                    "rules": [
+                        {
+                            "target": "params",
+                            "modifier": "id",
+                            "value": "",
+                            "invert": true,
+                            "operator": "null"
+                        }
+                    ],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        }
+    ],
+    "proxyMode": false,
+    "proxyHost": "",
+    "proxyRemovePrefix": false,
+    "tlsOptions": {
+        "enabled": false,
+        "type": "CERT",
+        "pfxPath": "",
+        "certPath": "",
+        "keyPath": "",
+        "caPath": "",
+        "passphrase": ""
+    },
+    "cors": true,
+    "headers": [
+        {
+            "key": "Content-Type",
+            "value": "application/json"
+        }
+    ],
+    "proxyReqHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "proxyResHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ]
+}
