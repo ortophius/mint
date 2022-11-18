@@ -1,18 +1,14 @@
 import { Background } from "../../shared/ui/components/layout";
+import { CartList } from "../../widgets/cartlist/cartlist";
 import { Checkout } from "../../widgets/checkout/checkout";
-import { DishList } from "../../widgets/dishlist/dishlist";
 import Header from "../../widgets/header/ui/header";
-import { ListTitle } from "../../widgets/listtitle/listtitle";
 
-const Home = () => {
+export const CheckoutPage = () => {
   return (
     <Background>
       <Header />
-      <ListTitle />
-      <DishList />
+      <CartList />
       <Checkout />
     </Background>
   );
 };
-
-export default Home;
