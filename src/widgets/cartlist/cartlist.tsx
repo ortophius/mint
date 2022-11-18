@@ -1,4 +1,10 @@
+import { useCallback, useEffect, useLayoutEffect } from "react";
+import { fetchCart } from "../../feature/cart/model";
 import { CartListItem } from "../../feature/cartlistitem/cartlistitem";
+import { getCart } from "../../shared/api/modules/menu";
+import { useAppDispatch, useAppSelector } from "../../shared/config/store";
+import { isClient } from "../../shared/lib/isClient";
+import { promises } from "../../shared/lib/promises";
 import styles from "./cartlist.module.scss";
 
 const testData = [
@@ -35,11 +41,13 @@ const testData = [
 ];
 
 export const CartList = () => {
+  const items = useAppSelector((state) => state.sync.cart);
+
   return (
     <div className={styles.wrapper}>
       <h1>Ваш заказ:</h1>
-      {testData.map((item) => (
-        <CartListItem key={Date.now()} data={item} />
+      {items.map((item) => (
+        <CartListItem key={item.id} menuItem={item} />
       ))}
     </div>
   );

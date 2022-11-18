@@ -18,6 +18,12 @@ html, body {
   color: var(--color-dirt-snow);
 }
 
+a, a:visited, a:active, a:focus {
+  color: var(--color-dirt-snow);
+  font-weight: 600;
+  outline: none;
+}
+
 * {
   box-sizing: border-box;
 }

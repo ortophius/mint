@@ -10,3 +10,7 @@ export type MenuItem = {
   price: number;
   image: string;
 };
+
+export type CartItem = MenuItem & {
+  count: number;
+};

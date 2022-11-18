@@ -26,3 +26,27 @@
   font-size: 15px;
   font-weight: 600;
 }
+
+.list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  width: 100%;
+  overflow-x: scroll;
+  
+  li + li {
+    margin-left: 24px;
+  }
+   li a {
+    color: var(--color-dirt-snow);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,21 +1,21 @@
 import React from "react";
-import { DishType } from "../../shared/types/dish";
+import { MenuItem } from "../../shared/api/modules/types";
 import { CartCounter } from "../cartcounter/cartcounter";
 import styles from "./cartlistitem.module.scss";
 
 interface ICartListItem {
-  data: DishType;
+  menuItem: MenuItem;
 }
 
-export const CartListItem: React.FC<ICartListItem> = ({ data }) => {
+export const CartListItem: React.FC<ICartListItem> = ({ menuItem }) => {
   return (
     <div className={styles.wrapper}>
-      <img src={data.img} alt="" className={styles.img} />
+      <img src={menuItem.image} alt="" className={styles.img} />
       <div className={styles.descr}>
-        <h3 className={styles.title}>{data.title}</h3>
+        <h3 className={styles.title}>{menuItem.name}</h3>
         <div className={styles.footer}>
-          <p className={styles.price}>{data.price}</p>
-          <CartCounter />
+          <p className={styles.price}>{menuItem.price}</p>
+          <CartCounter id={menuItem.id} />
         </div>
       </div>
     </div>
