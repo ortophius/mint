@@ -15,7 +15,7 @@
             "responses": [
                 {
                     "uuid": "61009245-688a-4107-9713-e5432b6a3283",
-                    "body": "[{{#repeat 5 10 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\"\n}\n{{/repeat}}]",
+                    "body": "[{{#repeat 15 20 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\"\n}\n{{/repeat}}]",
                     "latency": 0,
                     "statusCode": 200,
                     "label": "",
@@ -73,7 +73,7 @@
             "responses": [
                 {
                     "uuid": "59714257-649b-441f-bb55-8d0a9c3094c1",
-                    "body": "[{{#repeat 3 10 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}\n{{/repeat}}]",
+                    "body": "[{{#repeat 3 10 comma=true}}\n{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productName'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}\n{{/repeat}}]",
                     "latency": 0,
                     "statusCode": 200,
                     "label": "",
@@ -106,7 +106,7 @@
             "responses": [
                 {
                     "uuid": "181b6b98-452c-48e3-8937-d8c46cd43332",
-                    "body": "{\n  \"id\": \"{{guid}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}",
+                    "body": "{\n  \"id\": \"{{urlParam 'id'}}\",\n  \"name\": \"{{faker 'commerce.productAdjective'}}\",\n  \"description\": \"{{faker 'commerce.productDescription'}}\",\n  \"price\": {{faker 'commerce.price'}},\n  \"image\": \"{{faker 'image.food'}}\"\n}",
                     "latency": 0,
                     "statusCode": 200,
                     "label": "",
@@ -122,6 +122,31 @@
                             "operator": "null"
                         }
                     ],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true
+                }
+            ],
+            "enabled": true,
+            "responseMode": null
+        },
+        {
+            "uuid": "d29716ea-5cd4-464f-b025-84bf743eb88b",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "cart",
+            "responses": [
+                {
+                    "uuid": "18b4bcb5-412b-43ac-8841-bde55cc614dd",
+                    "body": "[\n{{#repeat 1 4 comma=true}}\n  {\n    \"id\": \"{{guid}}\",\n    \"name\": \"{{faker 'commerce.productName'}}\",\n    \"description\": \"{{faker 'commerce.productDescription'}}\",\n    \"price\": {{faker 'commerce.price'}},\n    \"image\": \"{{faker 'image.food'}}\",\n    \"count\": {{oneOf (array 1 2 3)}}\n  }\n{{/repeat}}\n]",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "filePath": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
                     "rulesOperator": "OR",
                     "disableTemplating": false,
                     "fallbackTo404": false,
@@ -149,6 +174,10 @@
         {
             "key": "Content-Type",
             "value": "application/json"
+        },
+        {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
         }
     ],
     "proxyReqHeaders": [

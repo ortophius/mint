@@ -1,21 +1,25 @@
 import styles from "./navbar.module.scss";
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { allCategories } from "../../../entities/categories/model";
+import {
+  allCategories,
+  fetchCategories,
+} from "../../../entities/categories/model";
 import { useAppSelector } from "../../../shared/config/store";
 import { useAsyncModel } from "../../../shared/lib/useAysyncModel";
+import { withAsyncThunk } from "../../../shared/lib/hocs";
 
-export const Navbar = () => {
-  const { sliceSelector } = useAsyncModel({
-    model: allCategories,
-    ssr: true,
-  });
+const NavbarComponent = () => {
+  // const { sliceSelector } = useAsyncModel({
+  //   model: allCategories,
+  //   ssr: true,
+  // });
 
-  const categories = useAppSelector(sliceSelector);
+  // const categories = useAppSelector(sliceSelector);
 
   return (
     <nav className={styles.wrapper}>
       <ul className={styles.list}>
-        {categories.map((item, count) => {
+        {/* {categories.map((item, count) => {
           return (
             <li
               key={item.id}
@@ -29,8 +33,10 @@ export const Navbar = () => {
               </a>
             </li>
           );
-        })}
+        })} */}
       </ul>
     </nav>
   );
 };
+
+export const Navbar = withAsyncThunk(NavbarComponent, fetchCategories);

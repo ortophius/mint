@@ -39,23 +39,23 @@ const testData = [
 ];
 
 export const DishList = () => {
-  const { sliceSelector } = useAsyncModel({
-    model: dishListModel,
-    fetchParam: v4(),
-    ssr: true,
-  });
+  // const { sliceSelector } = useAsyncModel({
+  //   model: dishListModel,
+  //   fetchParam: v4(),
+  //   ssr: true,
+  // });
 
-  const dishes = useAppSelector(sliceSelector);
+  // const dishes = useAppSelector(sliceSelector);
 
   return (
     <div className={styles.wrapper}>
-      {dishes.map((item) => {
+      {/* {dishes.map((item) => {
         return (
           <div className={styles.item}>
             <Card key={item.id} data={item} />
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };

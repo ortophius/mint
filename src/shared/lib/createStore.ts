@@ -37,14 +37,8 @@ declare global {
   }
 }
 
-type AsyncStore<S = never> = {
-  resolved: boolean;
-  sent: boolean;
-  state: S;
-};
-
-type AsyncStoreMap = {
-  [index: string]: AsyncStore;
+type AsyncStoreMap<S = unknown> = {
+  [index: string]: S;
 };
 
 type DynamicReducerMap = {
@@ -86,7 +80,7 @@ const promiseMiddleware: Middleware =
     syncDispatch(wrappedThunk);
   };
 
-export const createStore = <S = any>({
+export const createStore = <S = unknown>({
   ...params
 }: ConfigureStoreOptions<S>) => {
   const asyncReducers: ReducersMapObject = {
