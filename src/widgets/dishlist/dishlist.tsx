@@ -1,7 +1,12 @@
-import { v4 } from "uuid";
+import { categoriesSelector } from "../../entities/categories/model";
+import {
+  displayItemsSelector,
+  displayItemsSlice,
+  loadDefaultItems,
+} from "../../entities/items/model";
 import { Card } from "../../feature/card/card";
 import { useAppSelector } from "../../shared/config/store";
-import { useAsyncModel } from "../../shared/lib/useAysyncModel";
+import { withAsyncThunk, withSlice } from "../../shared/lib/hocs";
 import styles from "./dishlist.module.scss";
 import { dishListModel } from "./model";
 
@@ -38,24 +43,23 @@ const testData = [
   },
 ];
 
-export const DishList = () => {
-  // const { sliceSelector } = useAsyncModel({
-  //   model: dishListModel,
-  //   fetchParam: v4(),
-  //   ssr: true,
-  // });
-
-  // const dishes = useAppSelector(sliceSelector);
+const DishListComponent = () => {
+  const dishes = useAppSelector(displayItemsSelector);
 
   return (
     <div className={styles.wrapper}>
-      {/* {dishes.map((item) => {
+      {dishes.map((item) => {
         return (
           <div className={styles.item}>
             <Card key={item.id} data={item} />
           </div>
         );
-      })} */}
+      })}
     </div>
   );
 };
+
+export const DishList = withSlice(
+  withAsyncThunk(DishListComponent, loadDefaultItems),
+  displayItemsSlice
+);

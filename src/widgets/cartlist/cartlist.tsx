@@ -1,10 +1,5 @@
-import { useCallback, useEffect, useLayoutEffect } from "react";
-import { fetchCart } from "../../feature/cart/model";
 import { CartListItem } from "../../feature/cartlistitem/cartlistitem";
-import { getCart } from "../../shared/api/modules/menu";
-import { useAppDispatch, useAppSelector } from "../../shared/config/store";
-import { isClient } from "../../shared/lib/isClient";
-import { promises } from "../../shared/lib/promises";
+import { useAppSelector } from "../../shared/config/store";
 import styles from "./cartlist.module.scss";
 
 const testData = [

@@ -1,43 +1,23 @@
+import { Slice } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { useAppDispatch } from "../config/store";
-import createAsyncSlice, { AsyncSliceParams } from "./createAsyncSlice";
+import { StatusPage } from "../../pages/status/statusPage";
+import { useAppDispatch, useAppSelector } from "../config/store";
 import { useAppStore } from "./useAppStore";
 
-type UseAsyncModelParams<S = never, Q = never> = {
-  model: Omit<AsyncSliceParams<S, Q>, "dispatch">;
-  fetchParam?: Q;
+type UseLazySliceParams<S = never, Q = never> = {
+  slice: Slice<S>;
   ssr?: boolean;
 };
 
-export const useAsyncModel = <S = never, Q = never>({
-  model,
-  fetchParam,
+export const useLazySlice = <S = never, Q = never>({
+  slice,
   ssr = true,
-}: UseAsyncModelParams<S, Q>) => {
-  const [initialFetchSent, setInitialFetchSent] = useState(false);
-  const [attached, setAttached] = useState(false);
-  const dispatch = useAppDispatch();
+}: UseLazySliceParams<S, Q>) => {
+  const { async } = useAppSelector((state) => state);
   const store = useAppStore();
-
-  const currentSlice = createAsyncSlice<S, Q>({
-    ...model,
-    dispatch,
-  });
-
-  const { slice, fetch, sliceSelector } = currentSlice;
-
-  if (!attached) {
-    setAttached(true);
-    store.attachReducer(slice.reducer, model.name);
+  if (!async[slice.name]) {
+    store.attachReducer(slice.reducer, slice.name);
   }
 
-  if (ssr && !initialFetchSent) {
-    fetch(fetchParam);
-    setInitialFetchSent(true);
-  }
-
-  return {
-    sliceSelector,
-    fetch,
-  };
+  return useAppSelector((state) => state.async[slice.name] as S);
 };

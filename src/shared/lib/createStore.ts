@@ -16,17 +16,6 @@ import {
   ThunkDispatch,
 } from "@reduxjs/toolkit";
 import { isClient } from "./isClient";
-import { promises } from "./promises";
-
-type ThunkMiddleware<
-  State = unknown,
-  BasicAction extends Action = AnyAction,
-  ExtraThunkArg = undefined
-> = Middleware<
-  ThunkDispatch<State, ExtraThunkArg, BasicAction>,
-  State,
-  ThunkDispatch<State, ExtraThunkArg, BasicAction>
->;
 
 declare global {
   interface Window {
@@ -57,28 +46,6 @@ const createReducerPlaceholder = (state?: any) => () => ({
   sent: true,
   resolved: true,
 });
-
-const promiseMiddleware: Middleware =
-  () =>
-  (syncDispatch: ThunkDispatch<unknown, unknown, AnyAction>) =>
-  (action: AnyAction | AsyncThunkAction<AnyAction, unknown, unknown>) => {
-    if (typeof action !== "function") {
-      syncDispatch(action);
-      return;
-    }
-
-    const wrappedThunk = (
-      dispatch: ThunkDispatch<unknown, unknown, AnyAction>,
-      getState: () => unknown,
-      extra: unknown
-    ) => {
-      const promise = action(dispatch, getState, extra);
-      if (!isClient) promises.push(promise);
-      return promise;
-    };
-
-    syncDispatch(wrappedThunk);
-  };
 
 export const createStore = <S = unknown>({
   ...params
@@ -114,7 +81,6 @@ export const createStore = <S = unknown>({
   };
 
   const store = configureStore({
-    middleware: (getDefault) => getDefault().prepend(promiseMiddleware),
     preloadedState:
       typeof window !== "undefined"
         ? // eslint-disable-next-line no-underscore-dangle
